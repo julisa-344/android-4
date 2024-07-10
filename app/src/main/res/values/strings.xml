@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AppInmunocal</string>
+    <string name="home">Home</string>
+    <string name="testimonio">Testimonio</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="start_now">Empezar ahora</string>
+    <string name="texto1_welcome">NaturalHome un producto natural que te ayudara a mantenerte bien con tu salud</string>
+    <string name="texto2_welcome">NaturalHome es la solución para una buena vida</string>
+    <string name="texto3_welcome">NaturalHome los mejores suplementos al mejor precio</string>
+    <string name="texto4_welcome">NaturalHome un producto natural que te ayudara a mantenerte bien con tu salud</string>
+    <string name="title_activity_detail_store_view">DetailStoreView</string>
+    <string name="recommended">Recommended</string>
+    <string name="title_activity_add_review">AddReviewActivity</string>
+</resources>
