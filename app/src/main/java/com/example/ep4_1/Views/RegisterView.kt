@@ -1,5 +1,9 @@
 package com.example.ep4_1.Views
 
+import android.app.Activity
+import android.content.Context
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -43,6 +47,7 @@ fun RegisterView(navController: NavHostController) {
     var isPasswordVisible by remember { mutableStateOf(false) }
     var isPasswordValid by remember { mutableStateOf(false) }
     val userViewModel: UserViewModel = viewModel()
+
     Box(
         contentAlignment = Alignment.TopCenter,
         modifier = Modifier
@@ -77,7 +82,6 @@ fun RegisterView(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Username TextField
             TextFieldWithLabel(
                 label = "Nombre de usuario",
                 value = username,
@@ -87,7 +91,6 @@ fun RegisterView(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Fullname TextField
             TextFieldWithLabel(
                 label = "Nombre completo",
                 value = fullname,
@@ -97,7 +100,6 @@ fun RegisterView(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Email TextField
             TextFieldWithLabel(
                 label = "Correo",
                 value = email,
@@ -108,7 +110,6 @@ fun RegisterView(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Password TextField
             TextFieldWithLabel(
                 label = "Contraseña",
                 value = password,
@@ -124,7 +125,6 @@ fun RegisterView(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Register Button
             BtnRegistrarse(
                 navController = navController,
                 username = username,
@@ -204,7 +204,6 @@ fun BtnRegistrarse(
     userViewModel: UserViewModel
 ) {
     val db = ApplicationEP4.database
-
     Column(
         modifier = Modifier.padding(top = 15.dp, bottom = 15.dp),
     ) {
@@ -216,7 +215,10 @@ fun BtnRegistrarse(
                     db.userDao().insert(newUser)
                 }
                 userViewModel.setLoggedUser(newUser)
-                navController.navigate("home")
+                navController.navigate("home/${username}/${email}") {
+                    launchSingleTop = true
+                    restoreState = true
+                }
             },
             enabled = isButtonEnabled,
             colors = ButtonDefaults.buttonColors(

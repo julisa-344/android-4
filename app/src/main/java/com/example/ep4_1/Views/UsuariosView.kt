@@ -9,7 +9,6 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -24,6 +23,8 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.example.ep4_1.R
 
 @Composable
@@ -34,7 +35,8 @@ fun UsuariosView(navController: NavHostController, loggedUser: User) {
             Surface(modifier = Modifier.padding(reservado)){
                 ContentUsuariosView(navController, "")
             }
-        },        bottomBar = { barraInferior(navController, loggedUser)}
+        },
+        bottomBar = { barraInferior(navController)}
     )
 }
 
@@ -180,4 +182,10 @@ fun EditUserBottomSheet(user: User, onDismiss: () -> Unit, onSave: (User) -> Uni
         }
     ) {
     }
+}
+@Preview(showBackground = true)
+@Composable
+fun PreviewComponente3() {
+    val navController = rememberNavController()
+    UsuariosView(navController, User(1, "username", "julisa leon", "julisa@gmail.com", "123456"))
 }
